@@ -73,7 +73,9 @@ build-%: check-go-version-go
 		CGO_ENABLED=0 GOOS=linux GOARCH=ppc64le go build $(GOFLAGS_VENDOR) -a -ldflags '-X main.version=$(REV) -extldflags "-static"' -o ./bin/$*-ppc64le ./cmd/$* ; \
 		CGO_ENABLED=0 GOOS=linux GOARCH=s390x go build $(GOFLAGS_VENDOR) -a -ldflags '-X main.version=$(REV) -extldflags "-static"' -o ./bin/$*-s390x ./cmd/$* ; \
 	fi
-	: "Arch is $(ARCH) skipping push"; \
+	: "Arch is $(ARCH) skipping push"; 
+	ls
+	pwd
 	ls bin
 
 container-%: build-%
